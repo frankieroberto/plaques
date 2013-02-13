@@ -59,7 +59,7 @@ function addMap() {
 	addLoading();
 	var request = new XMLHttpRequest();
   request.onreadystatechange = stateChanged;
-  request.open('GET', 'http://openplaques.org/plaques.json?limit=500&data=simple', true);
+  request.open('GET', 'http://openplaques.org/plaques.json?data=basic', true);
 	request.send(null);
 
 
