@@ -14,34 +14,39 @@ function stateChanged(event) {
 
 				if (plaque.latitude && plaque.longitude) {
 						
-					var plaque_icon = new L.Icon({
-						iconUrl : "./images/marker-icon.png",
-						iconRetinaUrl: "./images/marker-icon@2x.png",
-						iconSize : 19
+					var plaque_icon = new L.DivIcon({
+						className: 'plaque-marker',
+						html: '',
+						iconSize : 16
 					});
+					
+					var plaque_inscription = '<div class="inscription">' + truncate(plaque.inscription, 255) + '</div><div class="info">' +
+						'<a class="link" href="http://openplaques.org/plaques/' + plaque.id + '">Plaque ' + plaque.id + '</a> ' +
+						'on <a href="http://openplaques.org" class="site">Open Plaques</a>';
+					
 					var marker = new L.Marker([plaque.latitude, plaque.longitude], {
 						icon : plaque_icon,
 						opacity: 0.8
-					});
-					plaque_markers.addLayer(marker);
+					}).bindPopup(plaque_inscription);
+					plaque_markers.addLayer(marker)
+					
 				}
 			}
 			removeLoading();
 			map.addLayer(plaque_markers);
 		
-		} 
+		} else {
+		console.log(request.status);
+		}
 	} 
 }
 
 function addMap() {
 
-	map = L.map('map').setView([54, -3], 6);
+	map = L.map('map', {
+		minZoom : 2
+	}).setView([54, -3], 3);
 	
-
-	var PlaqueIcon = L.Icon.extend({
-			iconUrl: 'marker.png',
-			shadowUrl: './marker-shadow.png',
-	});
 
 	var attribution = 'Plaque data from <a href="http://openplaques.org">Open Plaques"</a> (PD), map tiles by <a href="http://stamen.com">Stamen Design</a>  <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.';
 	
@@ -53,7 +58,15 @@ function addMap() {
 	
 	plaque_markers = new L.MarkerClusterGroup({
 		maxClusterRadius : 30,
-		showCoverageOnHover : false
+		showCoverageOnHover : false,
+		iconCreateFunction: function(cluster) {
+        return new L.DivIcon({ 
+        	html: cluster.getChildCount(), 
+        	className : 'plaque-cluster-marker ' + clusterSize(cluster.getChildCount()), 
+        	iconSize: clusterWidth(cluster.getChildCount())
+        });
+    }		
+		
 	});
 	
 	addLoading();
@@ -75,6 +88,40 @@ function addLoading() {
 	loading_div.setAttribute("id", "loading");
 	loading_div.innerHTML = "Loading";
 	document.body.appendChild(loading_div);
+}
+
+function clusterSize(number) {
+	
+	if (number < 10) {
+		return 'small';
+	} else if (number < 100) {
+		return 'medium';
+	} else  {
+		return 'large';
+	}
+
+}
+
+function clusterWidth(number) {
+	
+	if (number < 10) {
+		return 20;
+	} else if (number < 100) {
+		return 30;
+	} else  {
+		return 40;
+	}
+
+}
+
+function truncate(string, max_length) {
+
+	if (string.length > max_length) {
+		return string.substring(0, max_length) + '...';
+	} else {
+		return string;
+	}
+
 }
 
 document.addEventListener("DOMContentLoaded", addMap, false);
