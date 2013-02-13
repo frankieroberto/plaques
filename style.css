@@ -10,50 +10,10 @@ html, body, #map {
 	border-radius: 0;
 }
 
-.marker-cluster-small {
-	background-color: rgba(181, 226, 140, 0.6);
-	}
-.marker-cluster-small div {
-	background-color: rgba(110, 204, 57, 0.6);
-	}
-
-.marker-cluster-medium {
-	background-color: rgba(241, 211, 87, 0.6);
-	}
-.marker-cluster-medium div {
-	background-color: rgba(240, 194, 12, 0.6);
-	}
-
-.marker-cluster-large {
-	background-color: rgba(253, 156, 115, 0.6);
-	}
-.marker-cluster-large div {
-	background-color: rgba(241, 128, 23, 0.6);
-	}
-
-.marker-cluster {
-	background-clip: padding-box;
-	border-radius: 20px;
-	}
-.marker-cluster div {
-	width: 30px;
-	height: 30px;
-	margin-left: 5px;
-	margin-top: 5px;
-	color: black;
-	text-align: center;
-	border-radius: 15px;
-	font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	}
-.marker-cluster span {
-	line-height: 30px;
-	}
-
 
 #loading {
 	z-index: 100;
-	background-color: blue; color: white;
+	background-color: #3892E3; color: white;
 	font-size: 20px;
 	
 	width: 100px; height: 100px; border-radius: 50px;
@@ -63,4 +23,60 @@ html, body, #map {
 	font-family: 'Helvetica', sans-serif;
 	position: absolute;
 	left: 45%; top: 45%;
+}
+
+.inscription {
+	font-size: 16px;
+	font-family: 'Helvetica', Arial, sans-serif;
+	line-height: 24px;
+	margin-bottom: 16px;
+}
+
+.info {
+	font-size: 12px;
+	font-family: 'Helvetica', Arial, sans-serif;
+	color: #B8B8B8;
+}
+
+.link {
+	color: #3892E3;
+}
+
+a.site {
+	font-style: italic;
+	color: #888888;
+}
+
+.plaque-marker {
+	background-color: rgba(56, 146, 227, 0.9);
+	border-radius: 8px; height: 16px;
+	font-size: 1px;
+}
+
+.plaque-cluster-marker {
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	color: black;
+}
+
+.small {
+	border-radius: 10px; height: 20px;
+	line-height: 20px;
+	background-color: rgba(57, 204, 2,0.8);
+	
+}
+
+.medium {
+	border-radius: 15px; height: 30px;
+	line-height: 30px;
+	background-color: rgba(255, 173,36,0.8);
+
+}
+
+.large {
+	border-radius: 20px; 
+	height: 40px; line-height: 40px;
+	background-color: rgba(215,0,20,0.8);
 }
