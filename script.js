@@ -43,6 +43,11 @@ function stateChanged(event) {
 
 function addMap() {
 
+	var map_div = document.getElementById('map');
+	var feed_url = map_div.getAttribute('data-feed');
+
+	console.log(feed_url);
+
 	map = L.map('map', {
 		minZoom : 2
 	}).setView([54, -3], 3);
@@ -72,7 +77,7 @@ function addMap() {
 	addLoading();
 	var request = new XMLHttpRequest();
   request.onreadystatechange = stateChanged;
-  request.open('GET', 'http://openplaques.org/plaques.json?data=basic', true);
+  request.open('GET', feed_url, true);
 	request.send(null);
 
 
