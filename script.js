@@ -57,7 +57,7 @@ function addMap() {
 	map_tile_layer.addTo(map);
 	
 	plaque_markers = new L.MarkerClusterGroup({
-		maxClusterRadius : 30,
+		maxClusterRadius : 25,
 		showCoverageOnHover : false,
 		iconCreateFunction: function(cluster) {
         return new L.DivIcon({ 

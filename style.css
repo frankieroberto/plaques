@@ -63,6 +63,7 @@ a.site {
 
 .small {
 	border-radius: 10px; height: 20px;
+	margin-top: -10px; margin-left: 10px;
 	line-height: 20px;
 	background-color: rgba(57, 204, 2,0.8);
 	
@@ -70,6 +71,7 @@ a.site {
 
 .medium {
 	border-radius: 15px; height: 30px;
+	margin-top: -15px; margin-left: 15px;
 	line-height: 30px;
 	background-color: rgba(255, 173,36,0.8);
 
@@ -78,5 +80,6 @@ a.site {
 .large {
 	border-radius: 20px; 
 	height: 40px; line-height: 40px;
+	margin-top: -20px; margin-left: 20px;
 	background-color: rgba(215,0,20,0.8);
 }
